@@ -22,6 +22,8 @@ window.title("First Gui Program") #change title
 icon = PhotoImage(file='./Gui/Projects/beginner tutorials/setup/logo.png') # converting image to photo image
 window.iconphoto(True, icon)
 
+#* change the background color of the window
+window.config(background="black")
 
 #* Display
 window.mainloop() #this will place window on computer screen, will also listen for events 
