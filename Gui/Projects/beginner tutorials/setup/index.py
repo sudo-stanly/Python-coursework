@@ -8,3 +8,4 @@ from tkinter import *
 # creating and customizing our own window.
 
 window = Tk() #insantiate an instance of a window for us
+window.mainloop() #this will place window on computer screen, will also listen for events 
