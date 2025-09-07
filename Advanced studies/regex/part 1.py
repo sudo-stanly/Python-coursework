@@ -191,5 +191,18 @@ word = "The rain in Spain"
 
 #* you can also control the number of occurences by specifying the maxsplit parameter.
 #! re.split('\s', variable, maxpslit_parameter)
-word = re.split("\s", word, 1)
-print(word) #* returns a list ['The', 'rain in Spain']
+# word = re.split("\s", word, 1)
+# print(word) #* returns a list ['The', 'rain in Spain']
+
+
+
+"""
+
+    ! the sub() function:
+    * the sub() function replaces the matches with the text of your choice.
+
+"""
+
+#! example, replace every white space character with the number 9:
+word = re.sub("\s", "9", word)
+print(word) #* \s means space
