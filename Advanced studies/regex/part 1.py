@@ -155,6 +155,24 @@ z = txt="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
 #! summary: use span() to find the start and end of a string that you want to search
 txt = "minumulto na ako ng damdamin ko."
 find = re.search(r"\b\w*o\b", txt) #* search function only returns the first match
-print(find.span())
+# print(find.span())
 
 
+
+
+#! string example:
+#* returns the string passed into the function
+
+#first we try to search for an upper case "S" cahracter in the beginning pf a word and return its position using span
+word = "The rain in Spain"
+word = re.search(r"\bS\w+", word)
+# print("Position of 'S' is: ", word.span()) # returns (12, 17)
+
+#* now print the string passed into the function
+#* the string property returns the search string:
+# print(word.string) #returns the whole string when match is found
+
+#* to return the exact match we use the group() property 
+print(word.group())
+
+#! if there is no match, the value None will be returned, instead of the Match Object.
