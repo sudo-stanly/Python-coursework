@@ -204,5 +204,53 @@ word = "The rain in Spain"
 """
 
 #! example, replace every white space character with the number 9:
-word = re.sub("\s", "9", word)
-print(word) #* \s means space
+# word = re.sub("\s", "9", word)
+# print(word) #* \s means space
+
+#* for resub the parameters are re.sub(pattern, replacement, string) #example: re.sub(r"(\d+)%", r"(\1/100)", userInput)
+#* \d+ means to match one or more digits like 25
+#* () those group the digits as 1
+#* % the symbol you want to replace
+#* 25% matches, and group \1 = "25"
+#* when replacing with r'(\1/100)' , the \1 puts back whatever was in the first group (the digits)
+#* which becomes (25/100)
+#* string where we put the string variable we wan to replace
+
+userInput = "25%"
+# userInput = re.findall(r"\d", userInput) #* this will print as a list and gives single digit ['2', '5']
+# userInput = re.findall(r"\d+", userInput) #* this will print as a list and gives a whole number ['25']
+# print(re.findall(r"\d", "123abc456")) #* prints ['1','2','3', '4','5','6']
+# print(re.findall(r"\d+", "123abc456")) #* prints ['123', '456']
+# print(userInput)
+
+"""
+
+    ! Metacharacters
+    * metacharacters are characters with a special meaing:
+
+"""
+
+#!     CHARACTER                DESCRIPTION                                 EXAMPLE
+#*        []                  A set of characters                           "[a-m]"
+# find all lower case characters alphabetically between "a" and "m"
+# word = re.findall("[a-m]", word)
+# print(word) #* it prints all the letters/characters alphabetically found between a-m
+
+
+#*        \                 Signals a special sequence (can also be used    "\d"
+#*                          to escape special characters) 
+# find all digit characters:
+# cashier = "That will be 59 dollars"
+# cashier = re.findall("\d", cashier)
+# print(cashier) #* prints a list of digit found ['5', '9']  
+# cashier = re.findall("\d+", cashier)
+# print(cashier) #* prints a list of digit found ['59']  
+
+
+#*       .              Any character (except newline character)            "he..o"
+# search for a sequence that starts with "he", followed by two (any) characters, and an "o":
+greetings = "hello planet"
+greetings = re.findall(r"he..o", greetings)
+print(greetings) #* this prints ['hello']
+# so the '.' any metacharacter returns a character next to a word but except a newline character
+# so doing (r"he..o") prints "hello" while (r"he.lo") prints "hello"
