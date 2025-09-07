@@ -54,7 +54,7 @@ else:
 
 #! examples:
 
-#* findall:
+#! findall:
 txt = "The rain in Spain"
 x=re.findall("ai", txt) #! hmm... re.findall( "value_to_find", variable_containing_that_value )
 #print(x) #* This will return a list containing every occurence of "ai"
@@ -67,3 +67,94 @@ x=re.findall("Portugal", txt)
 #     print("Yes, there is at least one match")
 # else:
 #     print("No match")
+
+#! search() function:
+#* the search function searches the string for a match, and returns a 'Match Object' if there is a match.
+#* if there is more than one match, only the first occurence of the match will be returned:
+
+    #! first the match object:
+    #* a match object is an object containing information about the search and the result.
+    #* Note: if there is no match, the value None will be returned, instead of the Match Object.
+    
+#* example:
+
+#do a search taht will return a Match Object:
+x=re.search("ai", txt)
+#print(x) #this will print an object
+
+#* the match object has properties and methods used to retrieve information about the search, and the result:
+"""
+
+    ! .span():
+    * returns a tuple containing the start-, and end positions of the match.
+    
+    ! .string
+    * returns the string passed into the function
+    
+    ! .group()
+    * returns the part of the string where there was a match
+
+"""
+
+#! span() example:
+#* print the position (start- and end-position) of the first match occurence.
+#* the regular expression looks for any words that starts with an upper case "S"
+
+#* search for an upper case "S" character in the beginning of a word, and print its position.
+x = re.search(r"\bS\w+", txt)
+#print(x.span()) #* prints (12, 17) (start, end) 
+
+    #! try
+    #* \b start position?, \w end position?
+y = "I like pizza"
+# y = re.search(r"\ba\w+", y) #! wrong
+# print(y.span())
+
+    #* \b means word boundary or start of a word, ^ means beginning of a string, $ end of string, end of word is Z\b, while beginning is \bZ 
+    #* \w+ means end of one or more word characters
+# y = re.search(r"\bp\w+", y)
+# print(y) #! wrong: only use \b ... \w+ to find a start of a word. 
+
+#! a\b means word that ends with "a", \ba means word that starts with "a"
+# y = re.search(r"a\b", y)
+# print(y.span())
+
+#* searching in between
+"""
+    ! + means one or more: atleast one cahracter after the first 'a'
+    ! * means zero or moreL allows a as a full word
+"""
+
+z = txt="Lorem ipsum dolor sit amet consectetur, adipisicing elit." 
+# find = re.findall(r"\b\w*i\w*\b", z) #* words containing i
+# print(find)
+
+
+#! try:
+#* words that starts with 'a'
+# findChar = re.findall(r"\ba\w*", z)
+# print("words that starts with 'a': ", findChar)
+
+
+#* words that ends with 'm'
+# findChar = re.findall(r"\b\w*m\b", z) #* using r"a\b" only returns a one word of m
+# print("words that ends with 'm': ", findChar)
+
+
+#* use * if you want to  allow zero characters allowing even a single character like 'a' inside of a list ['a', 'apple', 'area']
+#* use + if you want to only allow atleast one more which excludes a character 'a' from the list ['apple', 'area']
+# w = "a apple area"
+# w = re.findall(r"\ba\w+", w)
+# print(w) #* prints ['apple', 'area']
+
+# w = re.findall(r"\ba\w*", w)
+# print(w) #* prints ['a', 'apple', 'area']
+
+
+#! going back to match object functions:
+#! summary: use span() to find the start and end of a string that you want to search
+txt = "minumulto na ako ng damdamin ko."
+find = re.search(r"\b\w*o\b", txt) #* search function only returns the first match
+print(find.span())
+
+
