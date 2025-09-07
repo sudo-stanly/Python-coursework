@@ -165,7 +165,7 @@ find = re.search(r"\b\w*o\b", txt) #* search function only returns the first mat
 
 #first we try to search for an upper case "S" cahracter in the beginning pf a word and return its position using span
 word = "The rain in Spain"
-word = re.search(r"\bS\w+", word)
+# word = re.search(r"\bS\w+", word)
 # print("Position of 'S' is: ", word.span()) # returns (12, 17)
 
 #* now print the string passed into the function
@@ -173,6 +173,23 @@ word = re.search(r"\bS\w+", word)
 # print(word.string) #returns the whole string when match is found
 
 #* to return the exact match we use the group() property 
-print(word.group())
+# print(word.group())
 
 #! if there is no match, the value None will be returned, instead of the Match Object.
+
+
+"""
+
+    ! split() function
+    * the split() function returns a list where the string has been split each match.
+
+"""
+
+#! example: split at each white space character
+# word = re.split("\s", word)
+# print(word) #* returns a list ['The', 'rain', 'in', 'Spain']
+
+#* you can also control the number of occurences by specifying the maxsplit parameter.
+#! re.split('\s', variable, maxpslit_parameter)
+word = re.split("\s", word, 1)
+print(word) #* returns a list ['The', 'rain in Spain']
