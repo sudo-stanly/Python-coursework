@@ -231,14 +231,14 @@ userInput = "25%"
 """
 
 #!     CHARACTER                DESCRIPTION                                 EXAMPLE
-#*        []                  A set of characters                           "[a-m]"
+#!        []                  A set of characters                           "[a-m]"
 # find all lower case characters alphabetically between "a" and "m"
 # word = re.findall("[a-m]", word)
 # print(word) #* it prints all the letters/characters alphabetically found between a-m
 
 
-#*        \                 Signals a special sequence (can also be used    "\d"
-#*                          to escape special characters) 
+#!        \                 Signals a special sequence (can also be used    "\d"
+#!                          to escape special characters) 
 # find all digit characters:
 # cashier = "That will be 59 dollars"
 # cashier = re.findall("\d", cashier)
@@ -247,10 +247,55 @@ userInput = "25%"
 # print(cashier) #* prints a list of digit found ['59']  
 
 
-#*       .              Any character (except newline character)            "he..o"
+#!       .              Any character (except newline character)            "he..o"
 # search for a sequence that starts with "he", followed by two (any) characters, and an "o":
-greetings = "hello planet"
-greetings = re.findall(r"he..o", greetings)
-print(greetings) #* this prints ['hello']
+#greetings = "hello planet"
+# greetings = re.findall(r"he..o", greetings)
+# print(greetings) #* this prints ['hello']
 # so the '.' any metacharacter returns a character next to a word but except a newline character
 # so doing (r"he..o") prints "hello" while (r"he.lo") prints "hello"
+
+#!  ^                        starts with                                    "^hello"
+# greetings = re.findall(r"^hello", greetings)
+# print(greetings) #* prints ['hello']
+
+#!  $                        ends with                                      "planet$"
+# greetings = re.findall(r"planet$", greetings)
+# print(greetings) #* prints ['planet']    
+
+#!  *                        zero or more occurences                         "he.*o"
+# search for a sequence that starts "he", followed by 0 or more (any) characters, and an "o":
+# greetings = re.findall("he.*o", greetings)
+# print(greetings) #* this prints ['hello']  
+
+#!  +                       one or more occurences                            "he.+o"
+# search for a sequence that starts with "he", followed by 1 or more (any) characters, and an "o":
+# greetings = re.findall(r"he.+o", greetings)
+# print(greetings) #* prints ['hello']
+
+#!  ?                       zero or one occurences                             "he.?o"
+##Search for a sequence that starts with "he", followed by 0 or 1  (any) character, and an "o":
+# greetings = re.findall(r"he.?o", greetings)
+# print(greetings) #* prints []
+#This time we got no match, because there were not zero, not one, but two characters between "he" and the "o"
+
+#!  {}                      exactly the specified number of occurences          "he.{2}o"
+#Search for a sequence that starts with "he", followed excactly 2 (any) characters, and an "o":
+# greetings = re.findall("he.{2}o", greetings)
+# print(greetings) #* prints ['hello']
+
+#!  |                       either or                                            "falls|stays
+#Check if the string contains either "falls" or "stays":
+# greetings = "The rain in Spain falls mainly in the plain!"
+# greetings = re.findall("falls|stays", greetings)
+# print(greetings)  #* prints ['falls']
+# if greetings:
+#   print("Yes, there is at least one match!")
+# else:
+#   print("No match")
+
+
+#!  () 	                    Capture and group
+# digits = "123v456"
+# digits = re.findall(r"(\d+)", digits)
+# print(digits) #* prints ['123', '456']
