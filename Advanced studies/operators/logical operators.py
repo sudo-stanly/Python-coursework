@@ -54,3 +54,14 @@ allowedChars = ('$^&*()')
 userInput = "lorem ipsum $"
 if not all(char in allowedChars for char in userInput):
     print("hello world")
+    
+    
+#! additional example
+
+#* example a user inputs we can also make the input empty with a NoneType after validating
+
+age = 20
+userInput = int(input("choose a number [1] [2] [3]"))
+if age >= 18 and userInput == 1:
+    userInput = None
+    print("Hello world")
