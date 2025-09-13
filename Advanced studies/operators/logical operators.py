@@ -28,3 +28,29 @@ x = 5
 
 #* imagine it like this
 # print( False or True ) #* it will always return true since the second operand is true.
+
+
+
+#! when to use these operators?
+#* by using and operator, it is used when both operands are true, for example if age >= 18 and isStudent, both are to be true
+#* if one becomes false this will not execute.
+isStudent = True
+age = 20
+if age >= 18 and isStudent:
+    print("hello")
+
+
+#* by using the or operator, it will only execute if one of the operands is true.
+if age >= 18 or age < 18:
+    print("welcome")
+    
+#* by using the not operator, it will reverse the boolean values of the operands, true to false, false to true
+x = True
+if not x:
+    print(f"value of x is {x} now it is {not x}") #* this will not execute because the value of x became false.
+    
+    #* example we have a set and want to check if a character is within that set
+allowedChars = ('$^&*()')
+userInput = "lorem ipsum $"
+if not all(char in allowedChars for char in userInput):
+    print("hello world")
