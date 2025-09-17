@@ -234,6 +234,16 @@ while True:
                     break
                 else:
                     print("[!] One word only.")
+                    
+                while True:
+                    x = input("\n[!] Press Q to quit: ")
+                    if x.lower() == 'q':
+                        clear()
+                        break
+                    else:
+                        print("[!] Invalid input. Please try again!")
+
+            print()
                 
         elif option == 7: #! Quit condition
             clear()
