@@ -69,30 +69,37 @@ import re
             * Add regex to extract hashtags (#example) or mentions (@user).
 """
 
-#! 1.) ask for user input.
-#! 2.) looped system menu
-
-#! added try and catch for invalid input
-#! 3.) checking number of sentences.
-#! 4.) creating a function for number of words and sentences.
-#! 5.) counting the times an option was used before quiting.
-#! 6.) Check if Palindrome
-
 def count_words(text):
-    #pass
-    # print(f"TEXT: {text}")
-    print(f"Number of words: {len(text)}")
-    
-    #! check if palindrome.      
-    #print(f"CURRENT: {str(text[0]).replace(',', '')}") #* convert to string?
 
-    #* replace all unecessary characters for a palindrome.
+    #! count words
+    format_text = str(text).split()
+    print(f"Number of words: {len(format_text)}")
     
-    convert_text_to_string = str(text[0])
-    if ',' in convert_text_to_string:
-        convert_text_to_string.replace(',', '')
+    
+    #! check palindrome.  
+    replace_text = re.sub(r"[,!.]", "", text)    
+    print(f"REPLACED TEXT: {replace_text}")
+    
+    #* then loop
+    split_replaced_text = str(replace_text).lower().split()
+    for word in split_replaced_text:
+        #! important! print("ELEMENT: ", word)
         
-    print(f"text after {convert_text_to_string}")
+        #* split each element?
+        element_to_list = list(word)
+        #! important! print(f"ELEMENT THAT SPLIT: {element_to_list}")
+
+        #* then get index and length of the list andcheck for palindrome
+        # index_of_word = 0
+        # last_index_of_word = len(element_to_list) - 1
+        #! important! print(f"\nFirst letter of {word}\t: {element_to_list[index_of_word]}\nLast letter of {word}\t:{element_to_list[last_index_of_word]}")
+        
+        #isPalindrome = index_of_word == last_index_of_word
+        isPalindrome = word == word[::-1]
+        if isPalindrome:
+            print(f"\"{word}\" is a Palindrome!")
+        else:
+            print(f"\"{word}\" is not a Palindrome!")
 
 def count_sentences(text):
     #pass
@@ -108,49 +115,21 @@ while True:
         
         if option == 1: #! Write condition
             print()
-                        
-            #* testing..
-            #sample_text = "Python is awsome, and very hard. Programming is cool."
-            #sample_text = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur.'
-                #* -> sample_text = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur'
-                #* -> sample_split_sentence = sample_text.split(".")
-                #* -> sample_count = len(sample_split_sentence) - 1 #* since i'm using length, i will reduce by 1 to not include the empty element.
-                #* -> print(f"Sentence(s): {sample_split_sentence}\nTotal of sentence(s): {sample_count}")
-            
-            #! now how to avoid a paragraph with no period in end of string.
-            #* -> endswith()
-                #* -> if sample_text.endswith('.'):
-                #* ->     print("Sentence ends with \".\"")
-                #* -> else:
-                #* ->     print("Please end your sentence with a \".\"")
-                
-            #! inserting user input to functions for counting number of words and sentences.
-            #! counting the times an option was also used.
-            #* take text and validate text first if ends with a period.
-            
+
             option_counter += 1
             user_text = input("Enter a text: ")
             
-            if user_text.endswith("."):
-                #print()
-                
-                #* format text for count_word function.
-                # formatted_text = user_text.replace(",", " ")
-                # formatted_text = user_text.replace("!", " ")                 
-                formatted_text = user_text.split()
-                count_words(formatted_text)
+            if user_text.endswith("."):                   
+                count_words(user_text)
                 count_sentences(user_text)
-                
-                #! after counting words and sentences, proceed to find email addresses and for numbers use regex.
                 
             else:
                 print("Please end your sentence with a period.")
                 
         elif option == 2: #! Quit condition
-            
             number_of_times_option_was_used = option_counter
             print(f" Option {option - 1} has been used '{number_of_times_option_was_used}' times.")
-            #                  sneaky
             break
+        
     except:
         print(" Invalid input.")
