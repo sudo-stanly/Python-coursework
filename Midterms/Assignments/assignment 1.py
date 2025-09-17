@@ -34,7 +34,7 @@ student = ""
 students_course = ""
 number_of_subjects = 0
 final_grade = 0
-GPA = ""
+GPA = float(0)
    
 def calculateAverage():
 
@@ -92,20 +92,24 @@ def calculateAverage():
                         
                         break
                     else:               
-                        if x > 0 and y > 0:
-                            print("[!] Missing subject/s and grade/s. Please try again.") 
-                            list_of_subjects.clear()
-                            list_of_grades.clear()
+                        # if x > 0 and y > 0:
+                        #     print("[!] Missing subject/s and grade/s. Please try again.") 
+                        #     list_of_subjects.clear()
+                        #     list_of_grades.clear()
                             
-                        elif x > 0 and y == 0:
+                        # elif x > 0 and y == 0:
+                        #     print("[!] Missing subject/s with complete grade. Please try again.")   
+                        #     list_of_subjects.clear()
+                        #     list_of_grades.clear()
+                            
+                        # elif x == 0 and y > 0:
+                        #     print("[!] Incomplete grade/s with complete subjects. Please try again.")   
+                        #     list_of_subjects.clear()
+                        #     list_of_grades.clear()     
+                        if x > 0 and y == 0:
                             print("[!] Missing subject/s with complete grade. Please try again.")   
                             list_of_subjects.clear()
                             list_of_grades.clear()
-                            
-                        elif x == 0 and y > 0:
-                            print("[!] Incomplete grade/s with complete subjects. Please try again.")   
-                            list_of_subjects.clear()
-                            list_of_grades.clear()     
                     print()
                 
             elif option == 2:
@@ -122,73 +126,73 @@ def letterGrade(f_grade):
     print()
     if evaluated_grade >= 95 and evaluated_grade <= 100:
         print("REMARKS\t\t: A\nGPA\t\t: 1")
-        GPA = "1"
+        GPA = 1.00
         gradeStatus(GPA)
         print()
         
     elif evaluated_grade >= 90 and evaluated_grade <= 95:
         print("REMARKS\t\t: A\nGPA\t\t: 1.5")
-        GPA = "1.5"
+        GPA = 1.50
         gradeStatus(GPA)
         print()
         
     elif evaluated_grade >= 85 and evaluated_grade <= 90:
         print("REMARKS\t\t: B\nGPA\t\t: 2")
-        GPA = "2"
+        GPA = 2.00
         gradeStatus(GPA)
         print()
         
     elif evaluated_grade >= 80 and evaluated_grade <= 85:
         print("REMARKS\t\t: B\nGPA\t\t: 2.5")
-        GPA = "2.5"
+        GPA = 2.50
         gradeStatus(GPA)
         print()
         
     elif evaluated_grade >= 75 and evaluated_grade <= 80:
         print("REMARKS\t\t: C\nGPA\t\t: 3")
-        GPA = "3"
+        GPA = 3.00
         gradeStatus(GPA)
         print()
         
     elif evaluated_grade >= 70 and evaluated_grade <= 75:
         print("REMARKS\t\t: D\nGPA\t\t: 3.5")
-        GPA = "3.5"
+        GPA = 3.50
         gradeStatus(GPA)
         print()
         
     elif evaluated_grade >= 65 and evaluated_grade <= 70:
         print("REMARKS\t\t: F\nGPA\t\t: 4")
-        GPA = "4"
+        GPA = 4.00
         gradeStatus(GPA)
         print()
         
     elif evaluated_grade >= 0 and evaluated_grade <= 65:
         print("REMARKS\t\t: F\nGPA\t\t: 4.5")
-        GPA = "4.5"
+        GPA = 4.50
         gradeStatus(GPA)
         print()
         
 def gradeStatus(stats):
 
-    if stats == "1":
+    if stats == 1.00:
         print("STATUS\t\t: Passed")
         
-    elif stats == "2":
+    elif stats == 2.00:
         print("STATUS\t\t: Passed")
         
-    elif stats == "2.5":
+    elif stats == 2.50:
         print("STATUS\t\t: Passed")
         
-    elif stats == "3":
+    elif stats == 3.00:
         print("STATUS\t\t: Passed")
         
-    elif stats == "3.5":
+    elif stats == 3.50:
         print("STATUS\t\t: Inc")
         
-    elif stats == "4":
+    elif stats == 4.00:
         print("STATUS\t\t: Inc")
 
-    elif stats == "4.5":
+    elif stats == 4.50:
         print("STATUS\t\t: Failed")
         
     print()
@@ -200,6 +204,6 @@ def gradeStatus(stats):
     students_course = ""
     number_of_subjects = 0
     final_grade = 0
-    GPA = ""
+    GPA = float(0)
         
 calculateAverage()
