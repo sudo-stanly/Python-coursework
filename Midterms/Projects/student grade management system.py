@@ -28,51 +28,59 @@ students = [
     }
 ]
 
-def sumOfGrades(sub_grades):
-    result = 0
-    for x in sub_grades:
-        sub_grades += x
+# def sumOfGrades(sub_grades):
+#     result = 0
+#     for x in sub_grades:
+#         sub_grades += x
         
-    result = sub_grades
+#     result = sub_grades
     
-    return result
+#     return result
 
 while True:
     try:
-        option = int(input("[1] Enter, [2] Search, [3] Quit: "))
+        print("--------------------------------------------------")
+        print( str("STUDENT GRADE MANAGEMENT SYSTEM").center(50))
+        print("[1] Enter\n[2] Add-Edit-Delete Student/Course\n[3] List of students\n[4] Quit")
+        print("--------------------------------------------------")
+        option = int(input("[#] choice: "))
         
         if option == 1:
             clear()
             
+            option = None
             enrolled_student = {
                     "name"         : [],
                     "course"       : "",
                     "year_level"   : int(0),
                     "semester"     : int(0), 
+                    
                     "final_grade"  : float(0),
                     "letter_grade" : "",
                     "gpa"          : float(0),
                     "grade_status" : "",
             }
-            courses = {
-                "bachelor_of_science_in_information_technology" : "bsit".upper(),
-                "bsit" : "bsit".upper(),
-                "bachelor_of_computer_science" : "comsci".upper(),
-                "comsci" : "comsci".upper()
-            }
+            available_courses = [
+                "bachelor_of_science_in_information_technology", 
+                "bsit", 
+                
+                "bachelor_of_computer_science", 
+                "bscomsci"
+            ]
+            prepositions = ['of', 'in', 'the', 'on', 'at']
+            
             
             while True:
                 
                 print("--------------------------------------------------")
-                opt = str("STUDENT GRADE MANAGEMENT SYSTEM").center(50)
-                print(opt)
+                print( str("STUDENT GRADE MANAGEMENT SYSTEM").center(50))
                 print("--------------------------------------------------")
             
                 print()
-                entered_name = input("[?] Name\t: ")
-                entered_course = input("[?] Course\t: ")
-                entered_year_level = input("[?] Year level\t: ")
-                entered_semester = input("[?] Semester\t: ")
+                entered_name = input("[#] Name\t: ")
+                entered_course = input("[#] Course\t: ")
+                entered_year_level = input("[#] Year level\t: ")
+                entered_semester = input("[#] Semester\t: ")
                 
                 if entered_name != "" and entered_course != "" and entered_year_level != "" and entered_semester != "":
                     clear()
@@ -87,150 +95,201 @@ while True:
                     take_entered_course = str(entered_course).lower()
                     cleaned_entered_course = re.sub(r"[,.!#$%^&*90@\d/?';:{}\-+=_]", "", take_entered_course)
                     split_entered_course = str(cleaned_entered_course).split()
+                    enrolled_student["course"] = " ".join(split_entered_course)
                     
-                    # check if course name is abbreviated or full name
-                    if len(split_entered_course) == 1:
-                        enrolled_student["course"] = " ".join(split_entered_course).lower()
-                        for key, value in courses.items():
-                            if enrolled_student["course"] == key:
-                                enrolled_student["course"] = value
-                                
-                            elif enrolled_student["course"] != key:
-               
-                                while True:
-                                    clear()
-                                                                    
-                                    enrolled_student["name"] = ""
-                                    enrolled_student["course"] = ""
-                                    enrolled_student["year_level"] = 0
-                                    enrolled_student["semester"] = 0
-                                    
-                                    print("--------------------------------------------------")
-                                    opt = str("COURSE NOT FOUND").center(50)
-                                    print(opt)
-                                    print(str("[E] Exit, [A] Add course").center(50))
-                                    print("--------------------------------------------------")
-                                    
-                                    print()
-                                    print(f"[!] \"{entered_course.title()}\" course is not available,\n     please check the list of available courses.\n")
-                                    
-                                    course_list = []
-                                    for key, value in courses.items():
-                                        course_list.append(key)
-                                        
-                                    for i in range(0, len(course_list), 2):
-                                        formatted_course_list = str(course_list[i]).replace('_', ' ')
-                                        print(f"* {formatted_course_list}")
+                    # check if course name is abbreviated or full name and check if course is existant.
+                    # print(f"entered course: {" ".join(split_entered_course)} : [{available_courses.count(" ".join(split_entered_course))}] found")
 
-                                    print()
-                                    course_option = input("[?] Choice: ")
+                    courses_available = available_courses.count("_".join(split_entered_course)) 
+                    if courses_available == 0:
+                        
+                        while True:
+                            clear()
+                            
+                            print("--------------------------------------------------")
+                            print(str("COURSE NOT FOUND").center(50))
+                            print("--------------------------------------------------")
+                            
+                            print()
+                            print(f"[!] The course \"{entered_course.title()}\" is not in our list of\n    courses. You can add a course into the list\n    or exit this window.")
+                            
+                            option = input("\n[?] Do you wish to proceed? [Y] Yes , [N] No: ")
+                            if option.lower() == 'y':
+                                clear()
+                                option = None
+                                
+                                while True:
                                     
-                                    if course_option.lower() == 'a':
-                                        course_option = None
+                                    print("--------------------------------------------------")
+                                    print(str("ADDING A COURSE").center(50))
+                                    print("--------------------------------------------------")
+                                    
+                                    print()
+                                    new_course = input("[#] Course name  : ")
+                                    
+                                    if len(new_course.split()) == 1:
                                         clear()
                                         
-                                        print("--------------------------------------------------")
-                                        opt = str("ADDING A COURSE").center(50)
-                                        print(opt)
+                                        print(f"[!] Please enter the full name of the course.")
+                                        print()
+                                        
+                                    else:
+                                        # abbreviate course name
+                                        format_new_course = new_course.lower()
+                                        remove_characters_from_new_course = re.sub(r"[,.!#$%^&*90@\d/?';:{}\-+=_]", "", new_course)
+                                        split_course_name = remove_characters_from_new_course.split()
+                                        list_course_name = list(split_course_name)
+                                        
+                                        #remove prepositions
+                                        # prepositions = ['of', 'in', 'the', 'on', 'at']
+                                        words_to_abbreviate = []
+                                        for words in list_course_name:
+                                            if words not in prepositions:
+                                                words_to_abbreviate.append(words) 
+                                
+                                        abbreviations = []
+                                        for x in range(len(words_to_abbreviate)):
+                                            get_element = list(words_to_abbreviate[x])
+                                            abbreviations.append(get_element[0].lower())
+                                            
+                                        print(f"[#] Abbreviation : ",end="")
+                                        for x in abbreviations:
+                                            print(str(x).upper(), end="")
+                                    
+                                        print("\n")
+                                        print("[S] Submit , [C] Cancel")
                                         print("--------------------------------------------------")
                                         
                                         print()
-                                        new_course = input("[?] Full name of course: ")
-                                        
-                                        # convert an abbreviation
-                                        split_course_title = new_course.lower().split()
-                                        
-                                        if "of" in split_course_title:
-                                            split_course_title.remove("of")
+                                        option = input("[#] Choice: ")
+                                        if option.lower() == 's':
+                                            clear()
                                             
-                                        if "in" in split_course_title:  
-                                            split_course_title.remove("in")
+                                            format_full_course_title = re.sub(r"\s", "_", new_course)
+                                            # print(f"COURSE {format_full_course_title}")
+                                            if available_courses.count(format_full_course_title) == 0:
                                             
-                                        if "the" in split_course_title:
-                                            split_course_title.remove("the")
-                                            
-                                        if "or" in split_course_title:
-                                            split_course_title.remove("or")
-                                            
-                                        if "on" in split_course_title:
-                                            split_course_title.remove("or")
-                                        
-                                        abbreviation_of_the_course = []
-                                        for x in range(len(split_course_title)):
-                                            get_element = list(split_course_title[x])
-                                            abbreviation_of_the_course.append(get_element[0].upper())
-                                            
-                                        print(f"[+] Abbreviation: ",end="")
-                                        for x in abbreviation_of_the_course:
-                                            print(x, end="")
-                                        
-                                        print()
-                                        while True:
-                                            course_option = input("[?] Press 'C' to cancel, 'S' to save: ")
-                                            
-                                            if course_option.lower() == 'c':
-                                                clear()
-                                                print("[!] Course has been cancelled.")
-                                                break
-                                            
-                                            elif course_option.lower() == 's':
-                                                clear()
-                                                print("[!] Course has been saved.")
-                                                break
-                                               
+                                                # title except prepositions
+                                                format_course_title = new_course.split()
+                                                list_of_formatted_course = list(format_course_title)
                                                 
+                                                print("[#] ' ", end="")
+                                                for word in list_of_formatted_course:
+                                                    if word not in prepositions:
+                                                        print(word.title(), end=" ")
+                                                        
+                                                    if word in prepositions:
+                                                        print(word.lower(), end=" ")
+                                                    
+                                                print("'",end=" ")   
+                                                print("\n     course has been added to the list.",end="")
+                                                
+                                                
+                                                # append abbreviated version
+                                                #print("ABBREVIATIONS: ","".join(abbreviations))
+                                                course_abbreviated = "".join(abbreviations)
+                                                
+                                                available_courses.append(format_full_course_title)
+                                                available_courses.append(course_abbreviated)
+                                                print()
+                                                
+                                                break
                                             else:
-                                                print("[!] Invalid input.")
+                                                clear()
+                                                
+                                                print("[!] Course is already in list, Please try another course.")
+                                                print()
+                                                
+                                        elif option.lower() == 'c':
+                                            clear()
                                             
-            
+                                            print("[!] Operation has been cancelled.")
+                                            print()
+                                            break
+                                        
+                                        
+                            elif option.lower() == 'n':
+                                clear()
+                                option = None
+                                    
+                                while True:
+                                    print("--------------------------------------------------")
+                                    print(f"\n[!] Listing of course has been cancelled, you may\n    add \"{entered_course.title()}\" in the future.\n")
+                                    print("--------------------------------------------------")
+
+                                    option = input("[Q] Exit: ")
+                                    if option.lower() == 'q':
+                                        clear()
+                                        option = None
+                                        break
                                     else:
                                         clear()
-                                        print("[!] Exited.")
-                                        
-                                        break
-                                     
-                    else:
-                        enrolled_student["course"] = "_".join(split_entered_course).lower()
-                        
-                        for key, value in courses.items():
-                            if enrolled_student["course"] == key:
-                                enrolled_student["course"] = value
-                            elif enrolled_student["course"] != key:
-                                clear()
-                                enrolled_student["name"] = ""
-                                enrolled_student["course"] = ""
-                                enrolled_student["year_level"] = 0
-                                enrolled_student["semester"] = 0
-                                
-                                print("No course found.")
-                                
-                                course_list = []
-                                for key, value in courses:
-                                    course_list.append(" ".join(key))
-                                    
-                                for i in range(0, len(course_list), 2):
-                                    print(course_list[i], end = " ")
-                                
+                                        option = None
+                                        print("[!] Invalid input.")
+                            break
 
                     # year level
                     take_entered_year_level = str(entered_year_level).lower()
                     cleaned_entered_year_level = re.sub(r"[A-za-z,.!#$%^&*90@/?';:{}\-+=_]", "", take_entered_year_level)
                     if cleaned_entered_year_level:
                         enrolled_student["year_level"] = cleaned_entered_year_level
-                        
-                        #print(enrolled_student)
-                        
+                    
                     else:
                         clear()
-                        print("[!] Year level must be a number.")
+                        
+                        print("[!] Year level must include a number.")
+                        print()
+                        
+                    # semester
+                    take_entered_semester = str(entered_semester).lower()
+                    cleaned_entered_semester = re.sub(r"[A-za-z,.!#$%^&*90@/?';:{}\-+=_]", "", take_entered_semester)
+                    if cleaned_entered_semester:
+                        enrolled_student["semester"] = cleaned_entered_semester
                     
+                    else:
+                        clear()
+                        
+                        print("[!] Semester must include a number.")
+                        print()
+                        
+                        
+                    while True:
+                        clear()
+                        
+                        option = None
+                        print("--------------------------------------------------")
+                        print( str("STUDENTS INFORMATION").center(50))
+                        print("--------------------------------------------------")
+                        
+                        print()
+                        print(f"[#] Name\t: {enrolled_student["name"]}")
+                        
+                        print("[#] Course\t: ", end="")
+                        e_course = enrolled_student["course"].split(" ")
+                        list_e_course = list(e_course)
+                        # print(f"{list_e_course} : length : {len(list_e_course)}")
+                        #! todo
+                        if len(list_e_course) == 1:
+                            print(" ".join(list_e_course).capitalize())
+                                
+                            print()                           
+                            option = input(":")
+                        else:
+                            for words in list_e_course:
+                                if words not in prepositions:
+                                    print(words.title(), end=" ")
+                                if words in prepositions:
+                                    print(words.lower(), end=" ") 
+                            
+                            print()                           
+                            option = input(":")
                 else:
                     clear()
                     print("[!] Field/s cannot be empty.")
         
-        elif option == 3:
+        elif option == 4:
             clear()
-            print("[-] Program ended.")
+            print("\n[-] Program ended.\n")
             
             break
                 
