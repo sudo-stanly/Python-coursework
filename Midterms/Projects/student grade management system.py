@@ -27,15 +27,25 @@ students = [
         "grade_status" : "",
     }
 ]
-
-# def sumOfGrades(sub_grades):
-#     result = 0
-#     for x in sub_grades:
-#         sub_grades += x
+enrolled_student = {
+        "name"         : [],
+        "course"       : "",
+        "year_level"   : int(0),
+        "semester"     : int(0), 
         
-#     result = sub_grades
+        "final_grade"  : float(0),
+        "letter_grade" : "",
+        "gpa"          : float(0),
+        "grade_status" : "",
+}
+available_courses = [
+    "bachelor_of_science_in_information_technology", 
+    "bsit", 
     
-#     return result
+    "bachelor_of_computer_science", 
+    "bscomsci"
+]
+prepositions = ['of', 'in', 'the', 'on', 'at']
 
 while True:
     try:
@@ -49,27 +59,7 @@ while True:
             clear()
             
             option = None
-            enrolled_student = {
-                    "name"         : [],
-                    "course"       : "",
-                    "year_level"   : int(0),
-                    "semester"     : int(0), 
-                    
-                    "final_grade"  : float(0),
-                    "letter_grade" : "",
-                    "gpa"          : float(0),
-                    "grade_status" : "",
-            }
-            available_courses = [
-                "bachelor_of_science_in_information_technology", 
-                "bsit", 
-                
-                "bachelor_of_computer_science", 
-                "bscomsci"
-            ]
-            prepositions = ['of', 'in', 'the', 'on', 'at']
-            
-            
+
             while True:
                 
                 print("--------------------------------------------------")
@@ -230,7 +220,7 @@ while True:
 
                     # year level
                     take_entered_year_level = str(entered_year_level).lower()
-                    cleaned_entered_year_level = re.sub(r"[A-za-z,.!#$%^&*90@/?';:{}\-+=_]", "", take_entered_year_level)
+                    cleaned_entered_year_level = re.sub(r"[A-Za-z,.!#$%^&*@/?';:{}\-+=_]", "", take_entered_year_level)
                     if cleaned_entered_year_level:
                         enrolled_student["year_level"] = cleaned_entered_year_level
                     
@@ -242,7 +232,7 @@ while True:
                         
                     # semester
                     take_entered_semester = str(entered_semester).lower()
-                    cleaned_entered_semester = re.sub(r"[A-za-z,.!#$%^&*90@/?';:{}\-+=_]", "", take_entered_semester)
+                    cleaned_entered_semester = re.sub(r"[A-Za-z,.!#$%^&*@/?';:{}\-+=_]", "", take_entered_semester)
                     if cleaned_entered_semester:
                         enrolled_student["semester"] = cleaned_entered_semester
                     
@@ -265,24 +255,46 @@ while True:
                         print(f"[#] Name\t: {enrolled_student["name"]}")
                         
                         print("[#] Course\t: ", end="")
-                        e_course = enrolled_student["course"].split(" ")
-                        list_e_course = list(e_course)
-                        # print(f"{list_e_course} : length : {len(list_e_course)}")
-                        #! todo
-                        if len(list_e_course) == 1:
-                            print(" ".join(list_e_course).capitalize())
-                                
-                            print()                           
-                            option = input(":")
-                        else:
-                            for words in list_e_course:
-                                if words not in prepositions:
-                                    print(words.title(), end=" ")
-                                if words in prepositions:
-                                    print(words.lower(), end=" ") 
+                        e_course = enrolled_student["course"]
+                        for char in e_course:
+                            print(char.capitalize(), end="")
+                        print()
                             
-                            print()                           
-                            option = input(":")
+                            
+                        print("[#] Year level\t: ",end="")
+                        for key, value in enrolled_student.items():
+                            if key == 'year_level':
+                                if int(value) == 1:
+                                    print(f"{value}st year", end="")
+                                    
+                                elif int(value) == 2:
+                                    print(f"{value}nd year", end="")
+                                    
+                                elif int(value) == 3:
+                                    print(f"{value}rd year", end="")
+                                
+                                else:
+                                    print(f"{value}th year", end="")
+                        print()            
+                        
+                        
+                        print("[#] Semester\t: ",end="")
+                        for key, value in enrolled_student.items():
+                            if key == 'semester':
+                                if int(value) == 1:
+                                    print(f"{value}st", end="")
+                                    
+                                elif int(value) == 2:
+                                    print(f"{value}nd", end="")
+                                    
+                                elif int(value) == 3:
+                                    print(f"{value}rd", end="")
+                                
+                                else:
+                                    print(f"{value}th", end="")
+                                    
+                        print()                        
+                        option = input(":")
                 else:
                     clear()
                     print("[!] Field/s cannot be empty.")
