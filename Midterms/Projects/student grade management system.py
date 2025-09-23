@@ -8,12 +8,14 @@ def clear():
 
 """
 
-    ! STUDENT GRAED MANAGEMENT SYSTEM:
+    ! STUDENT GRADE MANAGEMENT SYSTEM:
     * -> assignment 1 expanded version
     * -> store students/grades/course/year level/gpa/grade status in an object
     * -> create a function that evaluates the grade and function for the grade status and letter grade
 
 """
+
+#! to refactor
 
 students = [
     {
@@ -46,6 +48,96 @@ available_courses = [
     "bscomsci"
 ]
 prepositions = ['of', 'in', 'the', 'on', 'at']
+
+subjects = [
+    {
+        "year_1_subjects" : {
+            "bsit" : 
+            {
+                "1st_semester" : 
+                {
+                    "programming_1" : 0,
+                    "introduction_to_computing" : 0,
+                    "visual_arts_and_craft" : 0,
+                    "nspt_1_(cwts)" : 0,
+                },
+                "2nd_semester" : 
+                {
+                    "programming_2" : 0,
+                    "nstp_2_(cwts)" : 0,
+                    "principles_of_accounting" : 0,
+                    "web_system_and_technologies" : 0,
+                }
+            },
+            "bscomsci" :
+            {
+                "message" : "[!] No available semester and subjects."
+            }
+        },
+        "year_2_subjects" : {
+            "bsit" : 
+            {
+                "1st_semester" : 
+                {
+                    "gender_and_society" : 0,
+                    "event_driven_programing" : 0,
+                    "integrative_programming_1" : 0,
+                    "object_oriented_programming" : 0,
+                    "understanding_the_self" : 0,
+                    "information_management" : 0,
+                    "human_computer_interactions" : 0,
+                },
+                "2nd_semester" : 
+                {
+                    "data_structures_and_algorithm" : 0,
+                    "platform_technology" : 0,
+                    "discrete_mathematics" : 0,
+                    "living_in_the_it_era" : 0,
+                    "purposive_communication" : 0,
+                    "integrative_programming_2" : 0,
+                    "advanced_database_management_system" : 0,
+                }
+            },
+            "bscomsci" :
+            {
+                "message" : "[!] No available semester and subjects."
+            }
+        },
+        "year_3_subjects" : {
+            "bsit" : 
+            {
+                "1st_semester" : 
+                {
+                    "python_programming" : 0,
+                    "app_development" : 0,
+                    "system_analysis_and_design" : 0,
+                    "mathematics_in_the_modern_world" : 0,
+                    "networking_1" : 0,
+                    "information_assurance" : 0,
+                    "quantitative_methods" : 0
+                },
+                "2nd_semester" : 
+                {
+                    "message" : "[!] No available subjects for this semester."
+                }
+            },
+            "bscomsci" :
+            {
+                "message" : "[!] No available semester and subjects."
+            }
+        },
+        "year_4_subjects" : {
+            "bsit" : 
+            {
+                "message" : "[!] No available semester and subjects."
+            },
+            "bscomsci" :
+            {
+                "message" : "[!] No available semester and subjects."
+            }
+        }
+    }
+]
 
 while True:
     try:
