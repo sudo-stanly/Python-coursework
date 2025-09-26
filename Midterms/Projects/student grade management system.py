@@ -6,397 +6,281 @@ def clear():
     else:
         os.system('clear')
 
-"""
-
-    ! STUDENT GRADE MANAGEMENT SYSTEM:
-    * -> assignment 1 expanded version
-    * -> store students/grades/course/year level/gpa/grade status in an object
-    * -> create a function that evaluates the grade and function for the grade status and letter grade
-
-"""
-
-#! to refactor
-
-students = [
+school = [
     {
-        "name"         : [],
-        "course"       : "",
-        "year_level"   : "",
-        "semester"     : "",
-        "final_grade"  : float(0),
-        "letter_grade" : "",
-        "gpa"          : float(0),
-        "grade_status" : "",
-    }
-]
-enrolled_student = {
-        "name"         : [],
-        "course"       : "",
-        "year_level"   : int(0),
-        "semester"     : int(0), 
-        
-        "final_grade"  : float(0),
-        "letter_grade" : "",
-        "gpa"          : float(0),
-        "grade_status" : "",
-}
-available_courses = [
-    "bachelor_of_science_in_information_technology", 
-    "bsit", 
-    
-    "bachelor_of_computer_science", 
-    "bscomsci"
-]
-prepositions = ['of', 'in', 'the', 'on', 'at']
-
-subjects = [
-    {
-        "year_1_subjects" : {
-            "bsit" : 
-            {
-                "1st_semester" : 
-                {
+        "1st_year" :{
+            "bsit" : {
+                "1st_semester" : {
                     "programming_1" : 0,
                     "introduction_to_computing" : 0,
-                    "visual_arts_and_craft" : 0,
-                    "nspt_1_(cwts)" : 0,
+                    "visual_arts_and_crafts" : 0,
+                    "nstp_1_cwts" : 0,
                 },
-                "2nd_semester" : 
-                {
+                "2nd_semester" : {
                     "programming_2" : 0,
-                    "nstp_2_(cwts)" : 0,
                     "principles_of_accounting" : 0,
                     "web_system_and_technologies" : 0,
                 }
-            },
-            "bscomsci" :
-            {
-                "message" : "[!] No available semester and subjects."
             }
         },
-        "year_2_subjects" : {
-            "bsit" : 
-            {
-                "1st_semester" : 
-                {
+        "2nd_year" :{
+            "bsit" : {
+                "1st_semester" : {
                     "gender_and_society" : 0,
-                    "event_driven_programing" : 0,
+                    "understanding_the_self" : 0,
+                    "event_driven_programming" : 0,
                     "integrative_programming_1" : 0,
                     "object_oriented_programming" : 0,
-                    "understanding_the_self" : 0,
-                    "information_management" : 0,
-                    "human_computer_interactions" : 0,
+                    "human_computer_interaction" : 0,
                 },
-                "2nd_semester" : 
-                {
+                "2nd_semester" : {
                     "data_structures_and_algorithm" : 0,
-                    "platform_technology" : 0,
+                    "platform_technologies" : 0,
                     "discrete_mathematics" : 0,
                     "living_in_the_it_era" : 0,
                     "purposive_communication" : 0,
                     "integrative_programming_2" : 0,
-                    "advanced_database_management_system" : 0,
+                    "advanced_database_management_system" : 0
                 }
-            },
-            "bscomsci" :
-            {
-                "message" : "[!] No available semester and subjects."
             }
         },
-        "year_3_subjects" : {
-            "bsit" : 
-            {
-                "1st_semester" : 
-                {
-                    "python_programming" : 0,
+        "3rd_year" :{
+            "bsit" : {
+                "1st_semester" : {
                     "app_development" : 0,
+                    "python_programming" : 0,
                     "system_analysis_and_design" : 0,
                     "mathematics_in_the_modern_world" : 0,
                     "networking_1" : 0,
                     "information_assurance" : 0,
-                    "quantitative_methods" : 0
+                    "quantitatve_methods" : 0
                 },
-                "2nd_semester" : 
-                {
-                    "message" : "[!] No available subjects for this semester."
+                "2nd_semester" : {
+                   "message" : "[!] Subjects of this semester is soon to be announced."
                 }
-            },
-            "bscomsci" :
-            {
-                "message" : "[!] No available semester and subjects."
             }
         },
-        "year_4_subjects" : {
-            "bsit" : 
-            {
-                "message" : "[!] No available semester and subjects."
-            },
-            "bscomsci" :
-            {
-                "message" : "[!] No available semester and subjects."
+        "4th_year" :{
+            "bsit" : {
+                "1st_semester" : {
+                    "message" : "[!] Subjects of this semester is soon to be announced."
+                },
+                "2nd_semester" : {
+                   "message" : "[!] Subjects of this semester is soon to be announced."
+                }
             }
         }
     }
 ]
 
+
+user = None
+choice = []
+
+year_level = None
+semester = None
+    
+clear()
 while True:
     try:
-        print("--------------------------------------------------")
-        print( str("STUDENT GRADE MANAGEMENT SYSTEM").center(50))
-        print("[1] Enter\n[2] Add-Edit-Delete Student/Course\n[3] List of students\n[4] Quit")
-        print("--------------------------------------------------")
-        option = int(input("[#] choice: "))
+        print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'))
+        user = int(input("\nPress 1 to enter, 0 to exit: ".rjust(5)))
         
-        if option == 1:
+        if user == 1:
             clear()
             
-            option = None
-
             while True:
-                
-                print("--------------------------------------------------")
-                print( str("STUDENT GRADE MANAGEMENT SYSTEM").center(50))
-                print("--------------------------------------------------")
-            
-                print()
-                entered_name = input("[#] Name\t: ")
-                entered_course = input("[#] Course\t: ")
-                entered_year_level = input("[#] Year level\t: ")
-                entered_semester = input("[#] Semester\t: ")
-                
-                if entered_name != "" and entered_course != "" and entered_year_level != "" and entered_semester != "":
+                print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(ROLES)".center(50), "\n\n* As Deans your role is to view, add, and remove\n  subjects.".rjust(5), "\n\n* As Instructor your role is to grade the subject\n  and students.".rjust(5), "\n")
+                user = input("Press 'C' to continue, 'R' to return: ")
+                if user.lower() == 'c':
                     clear()
+                    user = None
                     
-                    # name
-                    take_entered_name = str(entered_name).lower().title()
-                    cleaned_entered_name = re.sub(r"[,.!#$%^&*90@\d/?';:{}\-+=_]", "", take_entered_name)
-                    split_entered_name = str(cleaned_entered_name).split()
-                    enrolled_student["name"] = " ".join(split_entered_name)
-                    
-                    # course
-                    take_entered_course = str(entered_course).lower()
-                    cleaned_entered_course = re.sub(r"[,.!#$%^&*90@\d/?';:{}\-+=_]", "", take_entered_course)
-                    split_entered_course = str(cleaned_entered_course).split()
-                    enrolled_student["course"] = " ".join(split_entered_course)
-                    
-                    # check if course name is abbreviated or full name and check if course is existant.
-                    # print(f"entered course: {" ".join(split_entered_course)} : [{available_courses.count(" ".join(split_entered_course))}] found")
-
-                    courses_available = available_courses.count("_".join(split_entered_course)) 
-                    if courses_available == 0:
-                        
-                        while True:
+                    while True:
+                        print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(SUBJECTS)".center(50), "\n\n* Choosing Deans means you can view, add, and\n  remove a subject from a specific department.".rjust(5), "\n")
+                        user = input("Press 'C' to continue, 'R' to return: ")
+                        if user.lower() == 'c':
                             clear()
+                            user = None
                             
-                            print("--------------------------------------------------")
-                            print(str("COURSE NOT FOUND").center(50))
-                            print("--------------------------------------------------")
-                            
-                            print()
-                            print(f"[!] The course \"{entered_course.title()}\" is not in our list of\n    courses. You can add a course into the list\n    or exit this window.")
-                            
-                            option = input("\n[?] Do you wish to proceed? [Y] Yes , [N] No: ")
-                            if option.lower() == 'y':
-                                clear()
-                                option = None
+                            while True:
+                                print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(STUDENTS)".center(50), "\n\n* Choosing Instructor means you must list\n  regular students and irregular students for\n  proper subject grading.".rjust(5), "\n")
+                                user = input("Press 'C' to continue, 'R' to return: ")
                                 
-                                while True:
+                                if user.lower() == 'c':
+                                    clear()
+                                    user = None
                                     
-                                    print("--------------------------------------------------")
-                                    print(str("ADDING A COURSE").center(50))
-                                    print("--------------------------------------------------")
-                                    
-                                    print()
-                                    new_course = input("[#] Course name  : ")
-                                    
-                                    if len(new_course.split()) == 1:
-                                        clear()
-                                        
-                                        print(f"[!] Please enter the full name of the course.")
-                                        print()
-                                        
-                                    else:
-                                        # abbreviate course name
-                                        format_new_course = new_course.lower()
-                                        remove_characters_from_new_course = re.sub(r"[,.!#$%^&*90@\d/?';:{}\-+=_]", "", new_course)
-                                        split_course_name = remove_characters_from_new_course.split()
-                                        list_course_name = list(split_course_name)
-                                        
-                                        #remove prepositions
-                                        # prepositions = ['of', 'in', 'the', 'on', 'at']
-                                        words_to_abbreviate = []
-                                        for words in list_course_name:
-                                            if words not in prepositions:
-                                                words_to_abbreviate.append(words) 
-                                
-                                        abbreviations = []
-                                        for x in range(len(words_to_abbreviate)):
-                                            get_element = list(words_to_abbreviate[x])
-                                            abbreviations.append(get_element[0].lower())
-                                            
-                                        print(f"[#] Abbreviation : ",end="")
-                                        for x in abbreviations:
-                                            print(str(x).upper(), end="")
-                                    
-                                        print("\n")
-                                        print("[S] Submit , [C] Cancel")
-                                        print("--------------------------------------------------")
-                                        
-                                        print()
-                                        option = input("[#] Choice: ")
-                                        if option.lower() == 's':
-                                            clear()
-                                            
-                                            format_full_course_title = re.sub(r"\s", "_", new_course)
-                                            # print(f"COURSE {format_full_course_title}")
-                                            if available_courses.count(format_full_course_title) == 0:
-                                            
-                                                # title except prepositions
-                                                format_course_title = new_course.split()
-                                                list_of_formatted_course = list(format_course_title)
+                                    while True:
+                                        print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(ROLES)".center(50), "\n\n  [1] Deans\n  [2] Instructor".rjust(5), "\n")
+                                        user = input("Enter the role of your choice or press 'R' to\nreturn: ")
+                                        for char in user:
+                                            if str(user).isalpha():
+                                                choice.append(str(char).lower())
+                                            if str(user).isdigit():
+                                                choice.append(int(char))
                                                 
-                                                print("[#] ' ", end="")
-                                                for word in list_of_formatted_course:
-                                                    if word not in prepositions:
-                                                        print(word.title(), end=" ")
-                                                        
-                                                    if word in prepositions:
-                                                        print(word.lower(), end=" ")
-                                                    
-                                                print("'",end=" ")   
-                                                print("\n     course has been added to the list.",end="")
+                                        if str(choice[0]).isdigit():
+                                            if int(choice[0]) == 1: #! ROLE (DEANS) condition
+                                                clear()
+                                                user = None
+                                                choice = []
                                                 
+                                                while True:
+                                                    print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(DEANS)".center(50), "\n\n* Choose your department:\n  [1] IT Department".rjust(5), "\n")
+                                                    user = input("Enter the department of your choice or press 'R'\nto return: ")
+                                                    for char in user:
+                                                        if str(user).isalpha():
+                                                            choice.append(str(char).lower())
+                                                        if str(user).isdigit():
+                                                            choice.append(int(char))
+                                                            
+                                                    if str(choice[0]).isdigit(): #! IT DEPARTMENT (Deans) condition
+                                                        if int(choice[0]) == 1:
+                                                            clear()
+                                                            user = None
+                                                            choice = []
+                                                                
+                                                            while True:
+                                                                print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(DEANS)".center(50), "\n\n* Choose courses related to IT:\n  [1] Information Technology".rjust(5), "\n")
+                                                                user = input("Enter the department of your choice or press 'R'\nto return: ")
+                                                                for char in user:
+                                                                    if str(user).isalpha():
+                                                                        choice.append(str(char).lower())
+                                                                    if str(user).isdigit():
+                                                                        choice.append(int(char))
+                                                                        
+                                                                if str(choice[0]).isdigit():
+                                                                        if int(choice[0]) == 1:
+                                                                            clear()
+                                                                            user = None
+                                                                            choice = []
+                                                                            
+                                                                            while True:
+                                                                                print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(DEANS IT DEPT.)".center(50), "\n\n* Choose a mode:\n  [1] View subject/s\n  [2] Add subject/s\n  [3] Remove subjects/s".rjust(5), "\n")
+                                                                                user = input("Enter a mode or press 'R' to return: ")
+                                                                                for char in user:
+                                                                                    if str(user).isalpha():
+                                                                                        choice.append(str(char).lower())
+                                                                                    if str(user).isdigit():
+                                                                                        choice.append(int(char))
+                                                                                if str(choice[0]).isdigit():
+                                                                                    if int(choice[0]) == 1: #! VIEW MODE
+                                                                                        clear()
+                                                                                        user = None
+                                                                                        choice = []
+                                                                                        
+                                                                                        while True:
+                                                                                            try:
+                                                                                                print(" STUDENT GRADE MANAGEMENT SYSTEM ".center(50,'*'),"\n","(DEANS IT DEPT.)".center(50), "\n\n* Choose a year level:\n  [1] 1st year\n  [2] 2nd year\n  [3] 3rd year\n  [4] 4th year".rjust(5))
+                                                                                                year_level = int(input("  Enter year level: "))
+                                                                                                
+                                                                                                print("\n* Choose semester:\n  [1] 1st sem\n  [2] 2nd sem".rjust(5))
+                                                                                                semester = int(input("  Enter semester: "))
+                                                                                                
+                                                                                                
+                                                                                            except:
+                                                                                                clear()
+                                                                                                print("[ ! ] Invalid input. Please enter a number [ ! ]".center(50))
+                                                                                            
+                                                                                        
+                                                                                    elif int(choice[0]) == 2: #! ADD MODE
+                                                                                        print()
+                                                                                    elif int(choice[0]) == 3: #! REMOVE MODE
+                                                                                        print()
+                                                                                    else:
+                                                                                        clear()
+                                                                                        user = None
+                                                                                        choice = []
+                                                                                        print("[ ! ] Invalid input [ ! ]".center(50))
+                                                                                        
+                                                                                else:
+                                                                                    if str(choice[0]).isalpha():
+                                                                                        if str(choice[0]) == 'r':
+                                                                                            clear()
+                                                                                            user = None
+                                                                                            choice = []
+                                                                                            break
+                                                                                        else:
+                                                                                            clear()
+                                                                                            user = None
+                                                                                            choice = []
+                                                                                            print("[ ! ] Invalid input [ ! ]".center(50))
+                                                                else:
+                                                                    if str(choice[0]).isalpha():
+                                                                        if str(choice[0]) == 'r':
+                                                                            clear()
+                                                                            user = None
+                                                                            choice = []
+                                                                            break
+                                                                        else:
+                                                                            clear()
+                                                                            choice = []
+                                                                            print("[ ! ] Invalid input [ ! ]".center(50))
+                                                    else:
+                                                        if str(choice[0]).isalpha():
+                                                            if str(choice[0]) == 'r':
+                                                                clear()
+                                                                user = None
+                                                                choice = []
+                                                                break
+                                                            else:
+                                                                clear()
+                                                                user = None
+                                                                choice = []
+                                                                print("[ ! ] Invalid input [ ! ]".center(50))
                                                 
-                                                # append abbreviated version
-                                                #print("ABBREVIATIONS: ","".join(abbreviations))
-                                                course_abbreviated = "".join(abbreviations)
-                                                
-                                                available_courses.append(format_full_course_title)
-                                                available_courses.append(course_abbreviated)
+                                            elif int(choice[0]) == 2: #! ROLE (INSTRUCTOR) condition
                                                 print()
                                                 
-                                                break
                                             else:
                                                 clear()
+                                                user = None
+                                                choice = []
+                                                print("[ ! ] Invalid input [ ! ]".center(50))
                                                 
-                                                print("[!] Course is already in list, Please try another course.")
-                                                print()
-                                                
-                                        elif option.lower() == 'c':
-                                            clear()
-                                            
-                                            print("[!] Operation has been cancelled.")
-                                            print()
-                                            break
-                                        
-                                        
-                            elif option.lower() == 'n':
-                                clear()
-                                option = None
+                                        else:
+                                            if str(choice[0]).isalpha():
+                                                if str(choice[0]) == 'r':
+                                                    clear()
+                                                    user = None
+                                                    choice = []
+                                                    break
+                                                else:
+                                                    clear()
+                                                    user = None
+                                                    choice = []
+                                                    print("[ ! ] Invalid input [ ! ]".center(50))
                                     
-                                while True:
-                                    print("--------------------------------------------------")
-                                    print(f"\n[!] Listing of course has been cancelled, you may\n    add \"{entered_course.title()}\" in the future.\n")
-                                    print("--------------------------------------------------")
-
-                                    option = input("[Q] Exit: ")
-                                    if option.lower() == 'q':
-                                        clear()
-                                        option = None
-                                        break
-                                    else:
-                                        clear()
-                                        option = None
-                                        print("[!] Invalid input.")
+                                elif user.lower() == 'r':
+                                    clear()
+                                    user = None
+                                    break
+                                else:
+                                    clear()
+                                    print("[ ! ] Invalid input [ ! ]".center(50))
+                            
+                        elif user.lower() == 'r':
+                            clear()
+                            user = None
                             break
-
-                    # year level
-                    take_entered_year_level = str(entered_year_level).lower()
-                    cleaned_entered_year_level = re.sub(r"[A-Za-z,.!#$%^&*@/?';:{}\-+=_]", "", take_entered_year_level)
-                    if cleaned_entered_year_level:
-                        enrolled_student["year_level"] = cleaned_entered_year_level
+                        else:
+                            clear()
+                            print("[ ! ] Invalid input [ ! ]".center(50))
                     
-                    else:
-                        clear()
-                        
-                        print("[!] Year level must include a number.")
-                        print()
-                        
-                    # semester
-                    take_entered_semester = str(entered_semester).lower()
-                    cleaned_entered_semester = re.sub(r"[A-Za-z,.!#$%^&*@/?';:{}\-+=_]", "", take_entered_semester)
-                    if cleaned_entered_semester:
-                        enrolled_student["semester"] = cleaned_entered_semester
-                    
-                    else:
-                        clear()
-                        
-                        print("[!] Semester must include a number.")
-                        print()
-                        
-                        
-                    while True:
-                        clear()
-                        
-                        option = None
-                        print("--------------------------------------------------")
-                        print( str("STUDENTS INFORMATION").center(50))
-                        print("--------------------------------------------------")
-                        
-                        print()
-                        print(f"[#] Name\t: {enrolled_student["name"]}")
-                        
-                        print("[#] Course\t: ", end="")
-                        e_course = enrolled_student["course"]
-                        for char in e_course:
-                            print(char.capitalize(), end="")
-                        print()
-                            
-                            
-                        print("[#] Year level\t: ",end="")
-                        for key, value in enrolled_student.items():
-                            if key == 'year_level':
-                                if int(value) == 1:
-                                    print(f"{value}st year", end="")
-                                    
-                                elif int(value) == 2:
-                                    print(f"{value}nd year", end="")
-                                    
-                                elif int(value) == 3:
-                                    print(f"{value}rd year", end="")
-                                
-                                else:
-                                    print(f"{value}th year", end="")
-                        print()            
-                        
-                        
-                        print("[#] Semester\t: ",end="")
-                        for key, value in enrolled_student.items():
-                            if key == 'semester':
-                                if int(value) == 1:
-                                    print(f"{value}st", end="")
-                                    
-                                elif int(value) == 2:
-                                    print(f"{value}nd", end="")
-                                    
-                                elif int(value) == 3:
-                                    print(f"{value}rd", end="")
-                                
-                                else:
-                                    print(f"{value}th", end="")
-                                    
-                        print()                        
-                        option = input(":")
+                elif user.lower() == 'r':
+                    clear()
+                    user = None
+                    break
                 else:
                     clear()
-                    print("[!] Field/s cannot be empty.")
-        
-        elif option == 4:
+                    print("[ ! ] Invalid input [ ! ]".center(50))
+                        
+        elif user == 0:
             clear()
-            print("\n[-] Program ended.\n")
-            
+            print(" PROGRAM HAS ENDED ".center(50,'*'))
             break
-                
     except:
         clear()
-        print("[!] Invalid input.\n")
+        print("[ ! ] Invalid input [ ! ]".center(50))
+        
