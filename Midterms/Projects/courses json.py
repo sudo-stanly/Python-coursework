@@ -1,4 +1,9 @@
-
+import os
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 #! unpacking dictionaries
 
 #! normal dictionary
@@ -143,48 +148,84 @@ school = [
         }
     }
 ]
-x = 3
-chosen_year_level = school[x-1]
 
 list_of_subjects = []
 
-for YEAR_KEY, department in chosen_year_level.items():
-    print(f"[{x}] : {YEAR_KEY}")
-    
-    # display departments
-    for DEPARTMENT_KEY, dept_name in enumerate(department.keys(), start=1):
-        print(f"[{DEPARTMENT_KEY}] : {dept_name}")
-    
-    # choose department
-    y = 1
-    school_departments = list(department.keys())
-    chosen_department_name = school_departments[y - 1]
-    print(f"Chosen Department: {chosen_department_name}")
-    chosen_department = department[chosen_department_name]
-
-    # display courses
-    for COURSE_KEY, course_name in enumerate(chosen_department.keys(), start=1):
-        print(f"[{COURSE_KEY}] : {course_name}")
-        
-    # choose course
-    z = 1
-    course_list = list(chosen_department.keys())
-    chosen_course_name = course_list[z - 1]
-    print(f"Chosen Course: {chosen_course_name}")
-    chosen_course = chosen_department[chosen_course_name]
-
-    # choose semester
-    w = 1
-    semester_list = list(chosen_course.keys())
-    chosen_semester_num = semester_list[w - 1]
-    print(f"Chosen Semester: {chosen_semester_num}")
-    chosen_semester = chosen_course[chosen_semester_num]
-
-    # display subjects
-    for SUBJECT_KEY, subject in enumerate(chosen_semester, start=1):
-        print(f"[{SUBJECT_KEY}] : {subject}")
-
 #add subjects (instructor role)
 while True:
-    s = int(input("Add subjects for students: "))
+    print(f"List of Subjects: {list_of_subjects}")
+    
+    x = 3
+    chosen_year_level = school[x-1]
+    for YEAR_KEY, department in chosen_year_level.items():
+        print(f"[{x}] : {YEAR_KEY}")
+    
+        # display departments
+        for DEPARTMENT_KEY, dept_name in enumerate(department.keys(), start=1):
+            print(f"[{DEPARTMENT_KEY}] : {dept_name}")
+        
+        # choose department
+        y = 1
+        school_departments = list(department.keys())
+        chosen_department_name = school_departments[y - 1]
+        print(f"Chosen Department: {chosen_department_name}")
+        chosen_department = department[chosen_department_name]
 
+        # display courses
+        for COURSE_KEY, course_name in enumerate(chosen_department.keys(), start=1):
+            print(f"[{COURSE_KEY}] : {course_name}")
+            
+        # choose course
+        z = 1
+        course_list = list(chosen_department.keys())
+        chosen_course_name = course_list[z - 1]
+        print(f"Chosen Course: {chosen_course_name}")
+        chosen_course = chosen_department[chosen_course_name]
+
+        # choose semester
+        w = 1
+        semester_list = list(chosen_course.keys())
+        chosen_semester_num = semester_list[w - 1]
+        print(f"Chosen Semester: {chosen_semester_num}")
+        chosen_semester = chosen_course[chosen_semester_num]
+
+        # display subjects
+        for SUBJECT_KEY, subject in enumerate(chosen_semester, start=1):
+            print(f"[{SUBJECT_KEY}] : {subject}")
+    
+        # s = int(input("Choose subject to add: "))
+        # chosen_subject = chosen_semester[s - 1]
+        # list_of_subjects.append(chosen_subject)
+        s = int(input("Choose subject to add: "))
+        
+        for YEAR_KEY, department in chosen_year_level.items():
+            print(f"[{x}] : {YEAR_KEY}")
+          
+            # choose department
+            y = 1
+            school_departments = list(department.keys())
+            chosen_department_name = school_departments[y - 1]
+            chosen_department = department[chosen_department_name]
+                
+            # choose course
+            z = 1
+            course_list = list(chosen_department.keys())
+            chosen_course_name = course_list[z - 1]
+            chosen_course = chosen_department[chosen_course_name]
+
+            # choose semester
+            w = 1
+            semester_list = list(chosen_course.keys())
+            chosen_semester_num = semester_list[w - 1]
+            chosen_semester = chosen_course[chosen_semester_num]
+
+            # subjects
+            chosen_subject = chosen_semester[s - 1] 
+            isListed = list_of_subjects.count(chosen_subject)
+
+            if isListed == 0:
+                clear()
+                list_of_subjects.append(chosen_subject)
+            else:
+                clear()
+                print("[!] Subject already in list [!]".center(50, '*'))
