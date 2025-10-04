@@ -1,0 +1,70 @@
+<!-- 
+
+    Raw XML files can be viewed in all major browsers.
+
+    Don't expect XML files to be displayed as HTML pages.
+
+ -->
+ <?xml version="1.0" encoding="UTF-8"?>
+- <note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note> 
+<!-- 
+    Look at the XML file above in your browser: note.xml
+
+    Most browsers will display an XML document with color-coded elements.
+
+    Often a plus (+) or minus sign (-) to the left of the elements can be clicked to expand or collapse the element structure.
+
+    To view raw XML source, try to select "View Page Source" or "View Source" from the browser menu.
+
+    Note: In Safari 5 (and earlier), only the element text will be displayed. To view the raw XML, you must right 
+    click the page and select "View Source".
+ -->
+
+
+ <!-- 
+    Viewing an Invalid XML File
+
+    If an erroneous XML file is opened, some browsers will report the error, and some will display it, or display it incorrectly.
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+- <note>
+  <to>Tove</to>
+  <From>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note> 
+
+
+<!-- 
+
+    Other XML Examples
+
+    Viewing some XML documents will help you get the XML feeling:
+
+    An XML breakfast menu
+    This is a breakfast food menu from a restaurant, stored as XML.
+
+    An XML CD catalog
+    This is a CD collection, stored as XML.
+
+    An XML plant catalog
+    This is a plant catalog from a plant shop, stored as XML. 
+
+ -->
+ <!-- 
+    Why Does XML Display Like This?
+
+    XML documents do not carry information about how to display the data.
+
+    Since XML tags are "invented" by the author of the XML document, browsers do not know if a tag like <table> 
+    describes an HTML table or a dining table.
+
+    Without any information about how to display the data, the browsers can just display the XML document as it is.
+
+    Tip: If you want to style an XML document, use XSLT.
+  -->

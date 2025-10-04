@@ -1,0 +1,67 @@
+<!-- 
+
+XML is used in many aspects of web development.
+
+XML is often used to separate data from presentation.
+XML Separates Data from Presentation
+
+XML does not carry any information about how to be displayed.
+
+The same XML data can be used in many different presentation scenarios.
+
+Because of this, with XML, there is a full separation between data and presentation.
+XML is Often a Complement to HTML
+
+In many HTML applications, XML is used to store or transport data, while HTML is used to format and display the same data.
+
+ -->
+
+ <!-- 
+ 
+ XML Separates Data from HTML
+
+    When displaying data in HTML, you should not have to edit the HTML file when the data changes.
+
+    With XML, the data can be stored in separate XML files.
+
+    With a few lines of JavaScript code, you can read an XML file and update the data content of any HTML page. 
+ 
+  -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+
+  <book category="cooking">
+    <title lang="en">Everyday Italian</title>
+    <author>Giada De Laurentiis</author>
+    <year>2005</year>
+    <price>30.00</price>
+  </book>
+
+  <book category="children">
+    <title lang="en">Harry Potter</title>
+    <author>J K. Rowling</author>
+    <year>2005</year>
+    <price>29.99</price>
+  </book>
+
+  <book category="web">
+    <title lang="en">XQuery Kick Start</title>
+    <author>James McGovern</author>
+    <author>Per Bothner</author>
+    <author>Kurt Cagle</author>
+    <author>James Linn</author>
+    <author>Vaidyanathan Nagarajan</author>
+    <year>2003</year>
+    <price>49.99</price>
+  </book>
+
+  <book category="web" cover="paperback">
+    <title lang="en">Learning XML</title>
+    <author>Erik T. Ray</author>
+    <year>2003</year>
+    <price>39.95</price>
+  </book>
+
+</bookstore> 
+

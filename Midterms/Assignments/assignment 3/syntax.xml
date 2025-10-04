@@ -1,0 +1,178 @@
+<!-- 
+
+     The syntax rules of XML are very simple and logical. The rules are easy to learn, and easy to use.
+        XML Documents Must Have a Root Element
+
+        XML documents must contain one root element that is the parent of all other elements:
+
+ -->
+<root>
+  <child>
+    <subchild>.....</subchild>
+  </child>
+</root> 
+
+
+<!-- in thi example <note> is the root element -->
+<?xml version="1.0" encoding="UTF-8"?> 
+<note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note>
+
+<!-- 
+
+    The XML Prolog
+
+    This line is called the XML prolog:
+
+ -->
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!-- 
+
+    The XML prolog is optional. If it exists, it must come first in the document.
+
+    XML documents can contain international characters, like Norwegian øæå or French êèé.
+
+    To avoid errors, you should specify the encoding used, or save your XML files as UTF-8.
+
+    UTF-8 is the default character encoding for XML documents.
+
+    Character encoding can be studied in our Character Set Tutorial.
+
+ -->
+
+
+
+ <!-- 
+ 
+    All XML Elements Must Have a Closing Tag
+
+    In XML, it is illegal to omit the closing tag. All elements must have a closing tag:
+
+  -->
+<p>This is a paragraph.</p>
+<br /> 
+<!-- Note: The XML prolog does not have a closing tag! This is not an error. The prolog is not a part of the XML document.  -->
+
+
+<!-- 
+
+  XML Tags are Case Sensitive
+
+  XML tags are case sensitive. The tag <Letter> is different from the tag <letter>.
+
+  Opening and closing tags must be written with the same case:
+
+ -->
+<message>This is correct</message> 
+
+
+
+<!-- 
+
+  XML Elements Must be Properly Nested
+
+  In HTML, you might see improperly nested elements:
+
+ -->
+<b><i>This text is bold and italic</b></i> 
+
+
+<!-- In XML, all elements must be properly nested within each other: -->
+<b><i>This text is bold and italic</i></b> 
+
+
+<!-- In the example above, "Properly nested" simply means that since the <i> element is opened inside the <b> element, it must be closed inside the <b> element. -->
+
+
+<!-- 
+
+  XML Attribute Values Must Always be Quoted
+
+  XML elements can have attributes in name/value pairs just like in HTML.
+
+  In XML, the attribute values must always be quoted:
+
+ -->
+ <note date="12/11/2007">
+  <to>Tove</to>
+  <from>Jani</from>
+</note>
+
+
+<!-- 
+
+  Entity References
+
+  Some characters have a special meaning in XML.
+
+  If you place a character like "<" inside an XML element, it will generate an error because the parser interprets it as the start of a new element.
+
+  This will generate an XML error:
+
+ -->
+ <message>salary < 1000</message>
+
+
+ <!-- To avoid this error, replace the "<" character with an entity reference: -->
+<message>salary &lt; 1000</message> 
+
+
+
+
+<!-- There are 5 pre-defined entity references in XML: -->
+<!-- 
+      &lt; 	< 	less than
+      &gt; 	> 	greater than
+      &amp; 	& 	ampersand 
+      &apos; 	' 	apostrophe
+      &quot; 	" 	quotation mark
+ -->
+ <!-- Only < and & are strictly illegal in XML, but it is a good habit to replace > with &gt; as well. -->
+
+
+ <!-- 
+ 
+ Comments in XML
+
+The syntax for writing comments in XML is similar to that of HTML:
+  -->
+  <!-- this is a comment -->
+
+
+  <!-- Two dashes in the middle of a comment are not allowed: -->
+  <!-- This is an invalid -- comment -->
+
+
+<!-- 
+    White-space is Preserved in XML
+
+     XML does not truncate multiple white-spaces (HTML truncates multiple white-spaces to one single white-space):
+-->
+<!-- 
+      XML: 	Hello           Tove
+      HTML: 	Hello Tove
+ -->
+
+<!-- 
+    XML Stores New Line as LF
+
+      Windows applications store a new line as: carriage return and line feed (CR+LF).
+
+      Unix and Mac OSX use LF.
+
+      Old Mac systems use CR.
+
+      XML stores a new line as LF.
+-->
+<!-- 
+
+  Well Formed XML
+
+    XML documents that conform to the syntax rules above are said to be "Well Formed" XML documents.
+
+-->

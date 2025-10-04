@@ -1,0 +1,75 @@
+<!-- 
+
+    All modern browsers have a built-in XMLHttpRequest object to request data from a server.
+    The XMLHttpRequest Object
+
+    The XMLHttpRequest object can be used to request data from a web server.
+
+    The XMLHttpRequest object is a developers dream, because you can:
+
+        Update a web page without reloading the page
+        Request data from a server - after the page has loaded
+        Receive data from a server  - after the page has loaded
+        Send data to a server - in the background
+
+
+ -->
+
+
+ <!-- 
+    XMLHttpRequest Example
+
+        When you type a character in the input field below, an XMLHttpRequest is sent to the server, 
+        and some name suggestions are returned (from the server):
+  -->
+
+<!-- 
+    Example
+
+    Start typing a name in the input field below:
+
+    Name:   Suggestions: 
+ -->
+ <!-- The example above is explained in the AJAX chapters of this tutorial. -->
+
+
+ <!-- 
+ Sending an XMLHttpRequest
+
+    A common JavaScript syntax for using the XMLHttpRequest object looks much like this:
+  -->
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+};
+xhttp.open("GET", "filename", true);
+xhttp.send(); 
+
+<!-- 
+    Example Explained
+
+    The first line in the example above creates an XMLHttpRequest object:
+ -->
+ var xhttp = new XMLHttpRequest();
+
+ <!-- 
+        The onreadystatechange property specifies a function to be executed 
+        every time the status of the XMLHttpRequest object changes:
+  -->
+xhttp.onreadystatechange = function()
+
+
+<!--
+        When readyState property is 4 and the status property is 200, the response is ready:
+-->
+if (this.readyState == 4 && this.status == 200)
+
+<!-- 
+    The responseText property returns the server response as a text string.
+
+    The text string can be used to update a web page:
+-->
+ document.getElementById("demo").innerHTML = xhttp.responseText; 

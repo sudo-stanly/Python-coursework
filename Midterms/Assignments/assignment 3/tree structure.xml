@@ -1,0 +1,96 @@
+<!-- 
+
+    An Example XML Document
+
+    The image above represents books in this XML:
+
+ -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+  <book category="cooking">
+    <title lang="en">Everyday Italian</title>
+    <author>Giada De Laurentiis</author>
+    <year>2005</year>
+    <price>30.00</price>
+  </book>
+  <book category="children">
+    <title lang="en">Harry Potter</title>
+    <author>J K. Rowling</author>
+    <year>2005</year>
+    <price>29.99</price>
+  </book>
+  <book category="web">
+    <title lang="en">Learning XML</title>
+    <author>Erik T. Ray</author>
+    <year>2003</year>
+    <price>39.95</price>
+  </book>
+</bookstore> 
+
+
+<!-- 
+
+    XML TREE STRUCTURE
+
+    XML documents are formed as element trees.
+
+    An XML tree starts at a root element and branches from the root to child element.
+
+    All elements can have sub elements (child elements):
+
+ -->
+ 
+ <root>
+    <child>
+        <subchild>....</subchild>
+    </child>
+ </root>
+
+ <!-- 
+ 
+    The terms parent, child, and sibling are used to describe the relationships between elements.
+
+    Parents have children. Children have parents. Siblings are children on the same level (brothers and sisters).
+
+    All elements can have text content (Harry Potter) and attributes (category="cooking").
+
+  -->
+
+
+
+<!-- 
+
+    Self-Describing Syntax
+
+    XML uses a much self-describing syntax.
+
+    A prolog defines the XML version and the character encoding:
+
+-->
+<?xml version="1.0" encoding="UTF-8"?> 
+
+
+
+<!-- the next line is the root element of the document -->
+<bookstore>
+
+
+<!-- the next starts a <book> element -->
+<book category="cooking">
+
+
+<!-- The <book> elements have 4 child elements: <title>, <author>, <year>, <price>. -->
+<book>
+    <title lang="en">Everyday Italian</title>
+    <author>Giada De Laurenttiis</author>
+    <year>2005</year>
+    <price>30.00</price>
+</book>
+
+
+<!-- The next line ends the book element: -->
+</book>
+
+
+<!-- You can assume, from this example, that the XML document contains information about books in a bookstore. -->
