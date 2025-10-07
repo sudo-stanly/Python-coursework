@@ -1,0 +1,12 @@
+<data date="10-10-2025">
+    <info>
+        <name>Linus Torvalds</name>
+        <age>55</age>
+        <terminal>Linux</terminal>
+    </info>
+    <info>
+        <name>Van Rossum</name>
+        <age>49</age>
+        <terminal>Shell</terminal>
+    </info>
+</data>
