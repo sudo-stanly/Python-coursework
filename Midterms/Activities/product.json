@@ -1,0 +1,16 @@
+{
+    "market": [
+        {
+            "id": 1,
+            "name": "LCC",
+            "products": [
+                "apple"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Ayala",
+            "products": []
+        }
+    ]
+}
