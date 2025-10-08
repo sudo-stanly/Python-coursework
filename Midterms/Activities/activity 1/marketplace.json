@@ -1,0 +1,19 @@
+{
+    "market": [
+        {
+            "id": 1,
+            "name": "Legazpi City Centro Market",
+            "products": [
+                "tomatoes",
+                "potatoes",
+                "tomatoes",
+                "cauliflower"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Ayala Malls Legazpi City",
+            "products": []
+        }
+    ]
+}
