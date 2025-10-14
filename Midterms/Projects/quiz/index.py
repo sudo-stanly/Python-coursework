@@ -62,21 +62,3 @@ print(my_list)
 
 TUPLE = (10, 20, 30)
 # print(TUPLE)
-
-def calculate_average(grades):
-    list_of_grades = []
-    list_of_grades.append(grades)
-
-    # return sum(list_of_grades) / len(list_of_grades)
-    return sum(list_of_grades)
-   
-def get_status(average):
-    if average >= 75:
-        return "Pass"
-    else:
-        return "Fail"
-     
-    
-grade_list = [85, 98, 75, 85, 85]
-for i in grade_list:
-    calculate_average(i)
